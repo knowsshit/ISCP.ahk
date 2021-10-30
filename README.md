@@ -2,11 +2,14 @@
 AutoHotKey function for controlling Onkyo AVR over network using the ISCP protocol
 
 Requires Socket.ahk: https://github.com/G33kDude/Socket.ahk
+Put both files in Documents\AutoHotKey\Lib and use ```#Include <ISCP>``` in your AHK file for easy access.
 
 Special thanks to:
 * G33kDude for his work on Socket.ahk
-* /u/anonymous1184 on Reddit for helping me get started. I never touched AHK before this weekend!
+* /u/anonymous1184 on Reddit for helping me get started.
+I have never touched AHK before this weekend! :)
 
+Remember to change the IP address in the beginning of the script to get started!
 
 Example key bindings:
 
