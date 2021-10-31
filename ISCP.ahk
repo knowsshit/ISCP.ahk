@@ -51,7 +51,10 @@ class ISCP extends SocketTCP
 		try
 			Socket.Connect.Call(this, Address)
 		catch e
-			tooltip % "ISCP: Error connecting to AVR :(`n" e.What " failed at line" e.Line
+		{
+			MsgBox 0x40010, AutoHotKey ISCP error, % "Could not connect to the AVR :(`nPlease check the IP of your AVR in ISCP.ahk!"
+			return
+		}
 		size := VarSetCapacity(buffer, 16, 0)
 		StrPut("ISCP", &buffer, 4, "cp0")		; Packet header = ISCP
 		NumPut(0, &buffer, 4, "UChar")
