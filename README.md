@@ -7,9 +7,15 @@ Put both files in Documents\AutoHotKey\Lib and use ```#Include <ISCP>``` in your
 Special thanks to:
 * G33kDude for his work on Socket.ahk
 * /u/anonymous1184 on Reddit for helping me get started.
+
 I have never touched AHK before this weekend! :)
 
 Remember to change the IP address in the beginning of the script to get started!
+
+Features to come/personal wishlist (feel free to contact me if you want to help out!)
+* Option to show OSD on PC screen with new volume level or feedback from functions
+* A GUI Remote control with buttons for easy control of functions and a
+display to show volume, current input and other functions of the AVR.
 
 Example key bindings:
 
