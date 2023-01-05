@@ -51,6 +51,11 @@ ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
 #^+Del::ISCP("OSDEXIT")		; OSD back/exit
 #^+q::ISCP("OSDQUICK")		; OSD quick menu
 
+; Retrieving info is not implemented here yet (Socket.ahk fails to receive data from the AVR)
+; but you can connect to tcp port 60128 of your AVR and see the info there using putty/netcat/telnet
+#^+a::ISCP("IFAQSTN") ; Get info about the audio signal
+#^+v::ISCP("IFVQSTN") ; Get info about the video signal
+
 ; Find more commands by searching online!
 ; https://github.com/mkulesh/onpc/tree/master/doc got some extensive lists
 
