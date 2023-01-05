@@ -10,11 +10,12 @@ use #Include <ISCP> in your AHK file for easy access.
 
 Special thanks to:
 
-  o  G33kDude for his work on Socket.ahk
-  o  /u/anonymous1184 on Reddit for helping me get started.
+  *  G33kDude for his work on Socket.ahk
+  *  /u/anonymous1184 on Reddit for helping me get started.
 
 Example init line and set of key bindings to put in your .ahk script follows below:
 
+```
 ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
 
 ; Adjust master volume on receiver with Ctrl+Volume,
