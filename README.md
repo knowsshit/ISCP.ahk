@@ -1,12 +1,23 @@
 # ISCP.ahk
-AutoHotKey function for controlling Onkyo AVR over network using the eISCP protocol
-Function for controlling eISCP AVRs like Onkyo
+AutoHotKey function for controlling AVRs like Onkyo over the network using the eISCP protocol
 
 GitHub: https://github.com/knowsshit/ISCP.ahk
 
+Changelog:
+ * v1.2 - Lots of quality of life improvements
+ * * Persistent TCP connection
+ * * Rapid commands like holding down a button or using a volume wheel/scrollwheel for adjusting volume are now super smooth!
+ * * Implemented ISCPinit("ip.to.AV.receiver") command so you don't need to edit ISCP.ahk
+ * * Automatic connection retry on Send failure
+ * * Added timeout (default 3 minutes) to automatically disconnect and reconnect as needed. Will prevent failures of a stale connection.
+ * * Rewritten the way the network packet is buildt.
+ * * Tried to implement reading responses from the AVR, but Socket.ahk kept throwing warnings and no data was read. Anyone else care to give it a try?
+ 
+ * v1.0 - Initial release
+
 Socket.ahk is required: https://github.com/G33kDude/Socket.ahk
 Put that and this file in Documents\AutoHotKey\Lib and
-use #Include <ISCP> in your AHK file for easy access.
+use #Include <ISCP> in your own AHK file for easy access.
 
 Special thanks to:
 
@@ -16,6 +27,7 @@ Special thanks to:
 Example init line and set of key bindings to put in your .ahk script follows below:
 
 ```
+#Include <ISCP> ; Needed to include Documents\AutoHotKey\Lib\ISCP.ahk 
 ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
 
 ; Adjust master volume on receiver with Ctrl+Volume,
