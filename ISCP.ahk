@@ -22,9 +22,9 @@ Special thanks to:
   o  G33kDude for his work on Socket.ahk
   o  /u/anonymous1184 on Reddit for helping me get started.
 
-Example init line and set of key bindings to put in your .ahk script follows below:
+Example init line and set of key bindings to put in your own .ahk script follows below:
 
-ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
+ISCP_init("192.168.0.20")		; Change to the IP of your AVR!
 
 ; Adjust master volume on receiver with Ctrl+Volume,
 ; and bass with Ctrl+Shift+Volume
@@ -47,7 +47,7 @@ ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
 #^+d::ISCP("DIMDIM")	; Display Dimmer
 #^+p::ISCP("PWR01")		; Power on receiver
 #^+NumpadAdd::ISCP("AVSUP")	; A/V sync+
-#^+NumpadSub::ISCP("AVSDOWN") ; A/V sync-
+#^+NumpadSub::ISCP("AVSDOWN")	; A/V sync-
 
 ; OSD keys:
 #^+m::ISCP("OSDMENU")		; Open on-screen menu
@@ -71,7 +71,7 @@ ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
 */
 
 
-ISCPinit(IP)
+ISCP_init(IP)
 {
 	Global ISCPclient
 	Global ISCPserver
@@ -80,16 +80,16 @@ ISCPinit(IP)
 	ISCPserver := [IP, 60128]			; Connect to AVR on TCP port 60128
 	ISCPclient.Connect(ISCPserver)
 	ISCPidle := false
-	SetTimer ISCPidletimeout, 180000	; Make idle sockets time out, just in case....
+	SetTimer ISCP_idletimeout, 180000	; Make idle sockets time out, just in case....
 }
 
-ISCPidletimeout()
+ISCP_idletimeout()
 {
 	global ISCPidle
 	global ISCPclient
 	ISCPidle := true
 	ISCPclient.Disconnect()
-	SetTimer ISCPidletimeout, off
+	SetTimer ISCP_idletimeout, off
 }
 
 ISCP(cmd)
@@ -103,7 +103,7 @@ ISCP(cmd)
 		ISCPidle := false
 	}
 	ISCPclient.cmd(cmd)
-	SetTimer ISCPidletimeout, 180000	; Reset idle timer
+	SetTimer ISCP_idletimeout, 180000	; Reset idle timer
 }
 
 class ISCP extends SocketTCP
