@@ -12,12 +12,12 @@ Changelog:
  * * Added timeout (default 3 minutes) to automatically disconnect and reconnect as needed. Will prevent failures of a stale connection.
  * * Rewritten the way the network packet is buildt.
  * * Tried to implement reading responses from the AVR, but Socket.ahk kept throwing warnings and no data was read. Anyone else care to give it a try?
- 
+ * * Using #Include should not be needed anymore
+
  * v1.0 - Initial release
 
 Socket.ahk is required: https://github.com/G33kDude/Socket.ahk
-Put that and this file in Documents\AutoHotKey\Lib and
-use #Include <ISCP> in your own AHK file for easy access.
+Put that and this file in Documents\AutoHotKey\Lib
 
 Special thanks to:
 
@@ -27,8 +27,7 @@ Special thanks to:
 Example init line and set of key bindings to put in your .ahk script follows below:
 
 ```
-#Include <ISCP> ; Needed to include Documents\AutoHotKey\Lib\ISCP.ahk 
-ISCPinit("192.168.0.20")		; Change to the IP of your AVR!
+ISCP_init("192.168.0.20")		; Change to the IP of your AVR!
 
 ; Adjust master volume on receiver with Ctrl+Volume,
 ; and bass with Ctrl+Shift+Volume
