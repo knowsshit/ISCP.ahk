@@ -14,13 +14,7 @@ Function for controlling eISCP AVRs like Onkyo
 GitHub: https://github.com/knowsshit/ISCP.ahk
 
 Socket.ahk is required: https://github.com/G33kDude/Socket.ahk
-Put that and this file in Documents\AutoHotKey\Lib and
-use #Include <ISCP> in your AHK file for easy access.
-
-Special thanks to:
-
-  o  G33kDude for his work on Socket.ahk
-  o  /u/anonymous1184 on Reddit for helping me get started.
+Put that file and this file in Documents\AutoHotKey\Lib
 
 Example init line and set of key bindings to put in your own .ahk script follows below:
 
@@ -28,11 +22,11 @@ ISCP_init("192.168.0.20")		; Change to the IP of your AVR!
 
 ; Adjust master volume on receiver with Ctrl+Volume,
 ; and bass with Ctrl+Shift+Volume
-^Volume_Up::ISCP("MVLUP")		; Master vol up
+^Volume_Up::ISCP("MVLUP")	; Master vol up
 ^Volume_Down::ISCP("MVLDOWN")	; Master vol down
-^+Volume_Up::ISCP("TFRBUP")		; Bass up
+^+Volume_Up::ISCP("TFRBUP")	; Bass up
 ^+Volume_Down::ISCP("TFRBDOWN")	; Bass down
-^Volume_Mute::ISCP("AMTTG")		; Mute toggle
+^Volume_Mute::ISCP("AMTTG")	; Mute toggle
 
 ; Change Inputs with Win+Ctrl+Shift+F1 to F8
 #^+F1::ISCP("SLI01")	; CBL/SAT
@@ -65,9 +59,16 @@ ISCP_init("192.168.0.20")		; Change to the IP of your AVR!
  The commands above are from my script for the AVR Onkyo TX-RZ800.)
 
 
+Special thanks to:
+
+  *  G33kDude for his work on Socket.ahk
+  *  /u/anonymous1184 on Reddit for helping me get started.
+
+
   Do not change anything below this line unless you know what you are doing.
   Please make any useful modifications available online here:
   https://github.com/knowsshit/ISCP.ahk
+
 */
 
 
@@ -114,7 +115,7 @@ class ISCP extends SocketTCP
 			Socket.Connect.Call(this, Address)
 		catch e
 		{
-			MsgBox 0x40010, AutoHotKey ISCP error, % "Could not connect to the AVR :(`nPlease check the IP of your AVR in ISCP.ahk"
+			MsgBox 0x40010, AutoHotKey ISCP error, % "Could not connect to the AVR :(`nPlease check the IP of your AVR in your ISCP_init() command."
 			return
 		}
 	}
